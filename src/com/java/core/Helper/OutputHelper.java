@@ -5,7 +5,7 @@ import com.java.core.Repository.StudentRepository;
 
 public class OutputHelper {
 	
-	public void GetStudentdetails(Student S) {
+	public static void GetStudentdetails(Student S) {
 
 	
 	System.out.println("ID = " +S.ID);
@@ -16,6 +16,6 @@ public class OutputHelper {
 	System.out.println("Science Marks" +S.Sciencemarks);
 	System.out.println("English marks" +S.Englishmarks);
 
-	
+	System.out.println("===============================");
 	}
 }

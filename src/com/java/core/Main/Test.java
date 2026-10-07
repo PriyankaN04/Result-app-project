@@ -1,88 +1,76 @@
 package com.java.core.Main;
 
+import java.io.ObjectInputStream.GetField;
 import java.util.Scanner;
 
 import com.java.core.Entity.Student;
 import com.java.core.Helper.OutputHelper;
 import com.java.core.Repository.StudentRepository;
 
+import Services.StudentServices;
+
 public class Test {
 
 	public static void main(String[] args) {
-		
+
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Print details of Student:");
-		String name = sc.next();
-
-		StudentRepository Repository = new StudentRepository();
-		OutputHelper Helper = new OutputHelper();
-
 		
-
-		switch (name) {
-		case "Priyanka": {
-            Student Priyanka = Repository.GetPriyankadetails();
-			Helper.GetStudentdetails(Priyanka);
+		System.out.println("!!Welcome to result application!!");
+		System.out.println("Please select option from below");
+		System.out.println("1. Get student details by name");
+		System.out.println("2.GetField studentField details by ID");
+		System.out.println("3.. Get all student details");
+		
+		System.out.println("Please enter the option number");
+		int value = sc.nextInt();
+		System.out.println("Selected option is : " +value);
+		
+		StudentServices service = new StudentServices();
+		
+		
+		
+		switch (value) {
+		case 1: {
+			//value = 1 -> Option 1
+			System.out.println("Enter name of Student:");
+			String name = sc.next();
+			sc.close();
+			//1. get student details by name
+			service.getStudentDetailsByName(name);
+			
 			break;
 		}
 		
-		case "Nikhil" :{
-			Student Nikhil = Repository.GetNikhildetails();
-			Helper.GetStudentdetails(Nikhil);
+		case 2: {
+			//value = 2 -> Option 2
+			System.out.println("Enter ID of Student:");
+			int id = sc.nextInt();
+			sc.close();
+			//1. get student details by ID
+			service.getStudentDetailsByID(id);
+			
 			break;
 		}
 		
-		case "Softy" :{
-			Student Softy = Repository.GetSoftydetails();
-			Helper.GetStudentdetails(Softy);
+		
+		case 3:{
+			//value = 3 -> Option 3
+			//3. get all student details
+			service.getAllStudentDetails();
+			
 			break;
 		}
-		
-		case "Pihu" :{
-			Student Pihu = Repository.GetPihudetails();
-			Helper.GetStudentdetails(Pihu);
-			break;
-		}
-		
-		case "Anu" :{
-			Student Anu = Repository.GetAnudetails();
-			Helper.GetStudentdetails(Anu);
-			break;
-		}
-		
-		case "Michael" :{
-			Student Michael = Repository.GetMichaeldetails();
-			Helper.GetStudentdetails(Michael);
-			break;
-		}
-		
-		case "John" :{
-			Student John = Repository.GetJohndetails();
-			Helper.GetStudentdetails(John);
-			break;
-		}
-		
-		case "Mike" :{
-			Student Mike = Repository.GetMikedetails();
-			Helper.GetStudentdetails(Mike);
-			break;
-		}
-		
-		case "Jack" :{
-			Student Jack = Repository.GetJackdetails();
-			Helper.GetStudentdetails(Jack);
-			break;
-		}
-		
-		case "Julie" :{
-			Student Julie = Repository.GetJuliedetails();
-			Helper.GetStudentdetails(Julie);
-			break;
-		}
-		
 		default:
-			System.out.println("Please enter a proper name");
+			System.err.println("Unexpected value: " + value);
 		}
-
+		
+	
+	
+		
+		
+		
+		
+		
+		
 	}
 }
